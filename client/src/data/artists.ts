@@ -53,19 +53,19 @@ export const artists: Artist[] = [
       {
         title: 'Иван Грозный и сын его Иван',
         year: '1883–1885',
-        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Ivan_the_Terrible_and_his_son%2C_by_Repin.jpg/1200px-Ivan_the_Terrible_and_his_son%2C_by_Repin.jpg',
+        url: '/images/Ivan_the_Terrible_and_his_son,_by_Repin.jpg',
         description: 'Драматическая сцена, показывающая безумие царя после убийства сына.'
       },
       {
         title: 'Не ждали',
         year: '1884–1888',
-        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/RepinUnexpectedVisitors.jpg/1200px-RepinUnexpectedVisitors.jpg',
+        url: '/images/RepinUnexpectedVisitors.jpg',
         description: 'Мгновенное возвращение ссыльного революционера в семейный круг.'
       },
       {
         title: 'Запорожцы пишут письмо турецкому султану',
         year: '1880–1891',
-        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Reply_of_the_Zaporozhian_Cossacks.jpg/1200px-Reply_of_the_Zaporozhian_Cossacks.jpg',
+        url: '/images/Reply_of_the_Zaporozhian_Cossacks.jpg',
         description: 'Яркая, полная юмора сцена, воплощающая дух украинского казачества.'
       }
     ],
@@ -99,7 +99,7 @@ export const artists: Artist[] = [
     name: 'Иван Айвазовский',
     years: '1817–1900',
     country: 'Россия',
-    portrait: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Aivazovsky_-_Self-portrait_-_1881.jpg/600px-Aivazovsky_-_Self-portrait_-_1881.jpg',
+    portrait: '/images/Aivazovsky_-_Self-portrait_-_1881.jpg',
     facts: [
       'Родился в Феодосии в армянской семье. Всю жизнь оставался верен родному городу.',
       'Окончил Императорскую Академию художеств с большой золотой медалью.',
@@ -113,19 +113,19 @@ export const artists: Artist[] = [
       {
         title: 'Девятый вал',
         year: '1850',
-        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Aivazovsky_-_The_Ninth_Wave_-_Google_Art_Project.jpg/1200px-Aivazovsky_-_The_Ninth_Wave_-_Google_Art_Project.jpg',
+        url: '/images/Aivazovsky_-_The_Ninth_Wave_-_Google_Art_Project.jpg',
         description: 'Символ борьбы человека со стихией: кораблекрушенцы на обломках мачты среди гигантских волн.'
       },
       {
         title: 'Лунная ночь на Чёрном море',
         year: '1859',
-        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Aivazovsky%2C_Ivan_-_Moonlit_Night_on_the_Black_Sea.jpg/1200px-Aivazovsky%2C_Ivan_-_Moonlit_Night_on_the_Black_Sea.jpg',
+        url: '/images/Aivazovsky,_Ivan_-_Moonlit_Night_on_the_Black_Sea.jpg',
         description: 'Ослепительная игра лунного света на водной глади, ощущение бесконечного покоя.'
       },
       {
         title: 'Радуга',
         year: '1877',
-        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Ivan_Aivazovsky_-_The_Rainbow_%281877%29.jpg/1200px-Ivan_Aivazovsky_-_The_Rainbow_%281877%29.jpg',
+        url: '/images/Ivan_Aivazovsky_-_The_Rainbow_(1877).jpg',
         description: 'Контраст между мощью бури и тонкой, едва заметной радугой — символ надежды.'
       }
     ],
@@ -159,7 +159,7 @@ export const artists: Artist[] = [
     name: 'Валентин Серов',
     years: '1865–1911',
     country: 'Россия',
-    portrait: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Serov_by_Repin.jpg/600px-Serov_by_Repin.jpg',
+    portrait: '/images/Serov_by_Repin.jpg',
     facts: [
       'Сын композитора и пианистки, рос в творческой атмосфере: семья дружила с Репиным.',
       'Учился у Репина и в Академии художеств, но рано обрёл собственный стиль.',
@@ -173,19 +173,19 @@ export const artists: Artist[] = [
       {
         title: 'Девочка с персиками',
         year: '1887',
-        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/SerovDevochkaSPersikami.jpg/800px-SerovDevochkaSPersikami.jpg',
+        url: '/images/SerovDevochkaSPersikami.jpg',
         description: 'Солнечный свет, молодость и непринуждённость — шедевр русского импрессионизма.'
       },
       {
         title: 'Захарка',
         year: '1905',
-        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Valentin_Serov_-_The_Boy_with_a_Straw_Hat_-_Google_Art_Project.jpg/800px-Valentin_Serov_-_The_Boy_with_a_Straw_Hat_-_Google_Art_Project.jpg',
+        url: '/images/Valentin_Serov_-_The_Boy_with_a_Straw_Hat_-_Google_Art_Project.jpg',
         description: 'Энергичные мазки и свежесть восприятия, характерные для позднего творчества художника.'
       },
       {
         title: 'Портрет Феликса Юсупова',
         year: '1903',
-        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Serov_Yusupov.jpg/800px-Serov_Yusupov.jpg',
+        url: '/images/Serov_Yusupov.jpg',
         description: 'Аристократический портрет с психологической напряжённостью и декоративной выразительностью.'
       }
     ],
@@ -219,7 +219,7 @@ export const artists: Artist[] = [
     name: 'Михаил Врубель',
     years: '1856–1910',
     country: 'Россия',
-    portrait: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Vrubel_by_Braz.jpg/600px-Vrubel_by_Braz.jpg',
+    portrait: '/images/Vrubel_by_Braz.jpg',
     facts: [
       'Родился в Омске, отец служил военным. Детство прошло в разных гарнизонах.',
       'Окончил юридический факультет Петербургского университета, прежде чем стать художником.',
@@ -233,25 +233,25 @@ export const artists: Artist[] = [
       {
         title: 'Демон сидящий',
         year: '1890',
-        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Mikhail_Vrubel_-_The_Demon_Seated_-_Google_Art_Project.jpg/800px-Mikhail_Vrubel_-_The_Demon_Seated_-_Google_Art_Project.jpg',
+        url: '/images/Mikhail_Vrubel_-_The_Demon_Seated_-_Google_Art_Project.jpg',
         description: 'Мрачный, величественный образ тоски и разочарования — центральное произведение символизма.'
       },
       {
         title: 'Царевна-Лебедь',
         year: '1900',
-        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Vrubel_swan_princess.jpg/800px-Vrubel_swan_princess.jpg',
+        url: '/images/Vrubel_swan_princess.jpg',
         description: 'Волшебный, загадочный образ из оперы Римского-Корсакова, написанный в лечебнице.'
       },
       {
         title: 'Пан',
         year: '1899',
-        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Vrubel_Pan.jpg/800px-Vrubel_Pan.jpg',
+        url: '/images/Vrubel_Pan.jpg',
         description: 'Мифологический образ, полный языческой силы и декоративной выразительности.'
       },
       {
         title: 'Цветок сказки',
         year: '1895',
-        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Vrubel_fairytale_flower.jpg/800px-Vrubel_fairytale_flower.jpg',
+        url: '/images/Vrubel_fairytale_flower.jpg',
         description: 'Абстрактный, гипнотический цветок, предвосхищающий модерн и ар-деко.'
       }
     ],
@@ -285,7 +285,7 @@ export const artists: Artist[] = [
     name: 'Исаак Левитан',
     years: '1860–1900',
     country: 'Россия',
-    portrait: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Levitan_Self_portrait.jpg/600px-Levitan_Self_portrait.jpg',
+    portrait: '/images/Levitan_Self_portrait.jpg',
     facts: [
       'Родился в небогатой еврейской семье в Кибартах, ныне Литва.',
       'Учился в Московском училище живописи, где его заметили преподаватели.',
@@ -299,7 +299,7 @@ export const artists: Artist[] = [
       {
         title: 'Над вечным покоем',
         year: '1894',
-        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Levitan_nad_vechnym_pokoyem.jpg/1200px-Levitan_nad_vechnym_pokoyem.jpg',
+        url: '/images/Levitan_nad_vechnym_pokoyem.jpg',
         description: 'Тихое, величественное озеро под грозовыми тучами — размышление о вечности.'
       },
       {
@@ -311,7 +311,7 @@ export const artists: Artist[] = [
       {
         title: 'Владимирка',
         year: '1892',
-        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Levitan_Vladimirka.jpg/1200px-Levitan_Vladimirka.jpg',
+        url: '/images/Levitan_Vladimirka.jpg',
         description: 'Широкая дорога, уходящая вдаль, — трагический символ пути ссыльных в Сибирь.'
       }
     ],
@@ -359,19 +359,19 @@ export const artists: Artist[] = [
       {
         title: 'Мона Лиза',
         year: 'ок. 1503–1519',
-        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/800px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg',
+        url: '/images/Mona_Lisa,_by_Leonardo_da_Vinci,_from_C2RMF_retouched.jpg',
         description: 'Загадочная улыбка, безупречная перспектива и техника сфумато — икона Возрождения.'
       },
       {
         title: 'Тайная вечеря',
         year: '1495–1498',
-        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/The_Last_Supper_-_Leonardo_Da_Vinci_-_High_Resolution_32x16.jpg/1200px-The_Last_Supper_-_Leonardo_Da_Vinci_-_High_Resolution_32x16.jpg',
+        url: '/images/The_Last_Supper_-_Leonardo_Da_Vinci_-_High_Resolution_32x16.jpg',
         description: 'Момент, когда Христос объявляет о предательстве — шедевр композиции и психологии.'
       },
       {
         title: 'Дама с горностаем',
         year: 'ок. 1489–1490',
-        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Lady_with_an_Ermine_-_Leonardo_da_Vinci_-_Google_Art_Project.jpg/800px-Lady_with_an_Ermine_-_Leonardo_da_Vinci_-_Google_Art_Project.jpg',
+        url: '/images/Lady_with_an_Ermine_-_Leonardo_da_Vinci_-_Google_Art_Project.jpg',
         description: 'Портрет Чечилии Галлерани с тонким психологическим выражением и символикой.'
       }
     ],
@@ -425,7 +425,7 @@ export const artists: Artist[] = [
       {
         title: 'Афинская школа',
         year: '1509–1511',
-        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/%22The_School_of_Athens%22_by_Raffaello_Sanzio_da_Urbino.jpg/1200px-%22The_School_of_Athens%22_by_Raffaello_Sanzio_da_Urbino.jpg',
+        url: '/images/%22The_School_of_Athens%22_by_Raffaello_Sanzio_da_Urbino.jpg',
         description: 'Собрание великих философов античности — символ знания, гармонии и перспективы.'
       },
       {
@@ -465,7 +465,7 @@ export const artists: Artist[] = [
     name: 'Микеланджело Буонарроти',
     years: '1475–1564',
     country: 'Италия',
-    portrait: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Michelangelo_Daniele_da_Volterra_%28dettaglio%29.jpg/600px-Michelangelo_Daniele_da_Volterra_%28dettaglio%29.jpg',
+    portrait: '/images/Michelangelo_Daniele_da_Volterra_(dettaglio).jpg',
     facts: [
       'Родился в Капрезе, но рос во Флоренции, где его заметил Лоренцо Великолепный.',
       'Считал себя прежде всего скульптором, а живописью занимался с неохотой.',
@@ -479,19 +479,19 @@ export const artists: Artist[] = [
       {
         title: 'Сотворение Адама',
         year: '1508–1512',
-        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Michelangelo_-_Creation_of_Adam_%28cropped%29.jpg/1200px-Michelangelo_-_Creation_of_Adam_%28cropped%29.jpg',
+        url: '/images/Michelangelo_-_Creation_of_Adam_(cropped).jpg',
         description: 'Знаменитый жест рук, соединяющий божественное и человеческое — визитная карточка Возрождения.'
       },
       {
         title: 'Давид',
         year: '1501–1504',
-        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Michelangelo_David_-_3.jpg/800px-Michelangelo_David_-_3.jpg',
+        url: '/images/Michelangelo_David_-_3.jpg',
         description: 'Пятиметровая мраморная скульптура, воплощающая юношескую красоту и готовность к бою.'
       },
       {
         title: 'Пьета',
         year: '1498–1499',
-        url: "/wikimedia/wikipedia/commons/thumb/1/1f/Michelangelo%27s_Pieta_5450_cut_out_black.jpg/800px-Michelangelo%27s_Pieta_5450_cut_out_black.jpg",
+        url: "/images/Michelangelo_Pieta.jpg",
         description: 'Дева Мария с телом Христа — шедевр мраморной пластики, созданный в 23 года.'
       }
     ],
@@ -525,7 +525,7 @@ export const artists: Artist[] = [
     name: 'Сандро Боттичелли',
     years: '1445–1510',
     country: 'Италия',
-    portrait: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Sandro_Botticelli_083.jpg/600px-Sandro_Botticelli_083.jpg',
+    portrait: '/images/Sandro_Botticelli_083.jpg',
     facts: [
       'Родился во Флоренции, его настоящее имя — Алессандро ди Мариано ди Ванни Филипепи.',
       'Был учеником Филиппо Липпи, откуда перенял изящность линий и поэтичность.',
@@ -539,19 +539,19 @@ export const artists: Artist[] = [
       {
         title: 'Рождение Венеры',
         year: 'ок. 1484–1486',
-        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg/1200px-Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg',
+        url: '/images/Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg',
         description: 'Богиня любви, рождённая из пены морской, — символ красоты и гармонии эпохи Возрождения.'
       },
       {
         title: 'Весна',
         year: 'ок. 1477–1482',
-        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Sandro_Botticelli_-_La_Primavera_-_Google_Art_Project.jpg/1200px-Sandro_Botticelli_-_La_Primavera_-_Google_Art_Project.jpg',
+        url: '/images/Sandro_Botticelli_-_La_Primavera_-_Google_Art_Project.jpg',
         description: 'Аллегория весны с Венерой, Тремя Грациями и Зефиром — поэтичная нео-платоническая фантазия.'
       },
       {
         title: 'Мадонна Магнификат',
         year: '1483',
-        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Botticelli_Madonna_of_the_Magnificat.jpg/800px-Botticelli_Madonna_of_the_Magnificat.jpg',
+        url: '/images/Botticelli_Madonna_of_the_Magnificat.jpg',
         description: 'Круглая композиция с Мадонной, пишущей магнификат — изящество и духовность.'
       }
     ],
@@ -585,7 +585,7 @@ export const artists: Artist[] = [
     name: 'Караваджо',
     years: '1571–1610',
     country: 'Италия',
-    portrait: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Bacchus_by_Caravaggio_2.jpg/600px-Bacchus_by_Caravaggio_2.jpg',
+    portrait: '/images/Bacchus_by_Caravaggio_2.jpg',
     facts: [
       'Родился в городе Караваджо близ Милана, откуда и получил прозвище.',
       'Стал основоположником европейского барокко и революционером живописи.',
@@ -611,7 +611,7 @@ export const artists: Artist[] = [
       {
         title: 'Медуза',
         year: '1597',
-        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Caravaggio_Medusa.jpg/800px-Caravaggio_Medusa.jpg',
+        url: '/images/Caravaggio_Medusa.jpg',
         description: 'Щит с отрубленной головой горгоны Медузы — символ ужаса и реалистичности барокко.'
       }
     ],

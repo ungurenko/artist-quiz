@@ -32,13 +32,13 @@ function generateQuestions() {
   const questions = [
     {
       type: 'guessArtistByPainting',
-      image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Ilja_Jefimowitsch_Repin_013.jpg/800px-Ilja_Jefimowitsch_Repin_013.jpg',
+      image: '/images/Ilja_Jefimowitsch_Repin_013.jpg',
       options: ['Илья Репин', 'Василий Суриков', 'Виктор Васнецов', 'Валентин Серов'],
       correct: 0,
     },
     {
       type: 'guessArtistByPainting',
-      image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Aivazovsky_-_The_Ninth_Wave_-_Google_Art_Project.jpg/800px-Aivazovsky_-_The_Ninth_Wave_-_Google_Art_Project.jpg',
+      image: '/images/Aivazovsky_-_The_Ninth_Wave_-_Google_Art_Project.jpg',
       options: ['Иван Шишкин', 'Илья Репин', 'Иван Айвазовский', 'Исаак Левитан'],
       correct: 2,
     },
@@ -49,7 +49,7 @@ function generateQuestions() {
     },
     {
       type: 'guessArtistByPainting',
-      image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/600px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg',
+      image: '/images/Mona_Lisa,_by_Leonardo_da_Vinci,_from_C2RMF_retouched.jpg',
       options: ['Рафаэль', 'Леонардо да Винчи', 'Микеланджело', 'Боттичелли'],
       correct: 1,
     },
@@ -66,7 +66,7 @@ function generateQuestions() {
     },
     {
       type: 'guessArtistByPainting',
-      image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Mikhail_Vrubel_-_The_Demon_Seated_-_Google_Art_Project.jpg/600px-Mikhail_Vrubel_-_The_Demon_Seated_-_Google_Art_Project.jpg',
+      image: '/images/Mikhail_Vrubel_-_The_Demon_Seated_-_Google_Art_Project.jpg',
       options: ['Михаил Врубель', 'Виктор Васнецов', 'Илья Репин', 'Николай Рерих'],
       correct: 0,
     },

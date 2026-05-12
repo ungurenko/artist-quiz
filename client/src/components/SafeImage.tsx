@@ -34,7 +34,6 @@ export default function SafeImage({ src, alt, className = '' }: SafeImageProps) 
       className={className}
       onError={() => setError(true)}
       loading="lazy"
-      referrerPolicy="no-referrer"
     />
   );
 }

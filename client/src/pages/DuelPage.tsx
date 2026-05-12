@@ -42,12 +42,15 @@ export default function DuelPage() {
 
   const wsRef = useRef<WebSocket | null>(null);
 
-  const connect = useCallback(() => {
+  const connect = useCallback((onOpen?: (ws: WebSocket) => void) => {
+    wsRef.current?.close();
+
     const ws = new WebSocket(WS_URL);
     wsRef.current = ws;
 
     ws.onopen = () => {
       setError('');
+      onOpen?.(ws);
     };
 
     ws.onmessage = (event) => {
@@ -111,27 +114,25 @@ export default function DuelPage() {
     };
   }, [currentUser]);
 
-  const createGame = () => {
-    connect();
-    setTimeout(() => {
-      wsRef.current?.send(
+  const createGame = useCallback(() => {
+    connect((ws) => {
+      ws.send(
         JSON.stringify({
           type: 'create',
           playerId: currentUser,
           playerName: user.name,
         })
       );
-    }, 300);
-  };
+    });
+  }, [connect, currentUser, user.name]);
 
-  const joinGame = () => {
+  const joinGame = useCallback(() => {
     if (!inputCode.match(/^\d{4}$/)) {
       setError('Введите 4-значный код');
       return;
     }
-    connect();
-    setTimeout(() => {
-      wsRef.current?.send(
+    connect((ws) => {
+      ws.send(
         JSON.stringify({
           type: 'join',
           code: inputCode,
@@ -139,17 +140,20 @@ export default function DuelPage() {
           playerName: user.name,
         })
       );
-    }, 300);
-  };
+    });
+  }, [connect, currentUser, inputCode, user.name]);
 
-  const startGame = () => {
+  const startGame = useCallback(() => {
     wsRef.current?.send(JSON.stringify({ type: 'start' }));
-  };
+  }, []);
 
-  const sendAnswer = (answer: number) => {
+  const sendAnswer = useCallback((answer: number) => {
     if (selectedAnswer !== null) return;
-    setSelectedAnswer(answer);
+
     const q = questions[currentQ];
+    if (!q) return;
+
+    setSelectedAnswer(answer);
     if (answer === q.correct) {
       playCorrectSound();
     } else {
@@ -159,20 +163,19 @@ export default function DuelPage() {
       JSON.stringify({
         type: 'answer',
         answer,
-        time: Date.now(),
       })
     );
-  };
+  }, [currentQ, questions, selectedAnswer]);
 
-  const nextQuestion = () => {
+  const nextQuestion = useCallback(() => {
     wsRef.current?.send(JSON.stringify({ type: 'nextQuestion' }));
-  };
+  }, []);
 
-  const copyCode = () => {
+  const copyCode = useCallback(() => {
     navigator.clipboard.writeText(code);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
-  };
+  }, [code]);
 
   useEffect(() => {
     return () => {

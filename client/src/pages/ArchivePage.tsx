@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Filter } from 'lucide-react';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { artists } from '../data/artists';
 import { useProgressStore } from '../store/progressStore';
 import SafeImage from '../components/SafeImage';
+
+const COUNTRY_FILTERS = ['all', 'Россия', 'Италия'] as const;
 
 export default function ArchivePage() {
   const [filter, setFilter] = useState<'all' | 'Россия' | 'Италия'>('all');
@@ -12,7 +14,10 @@ export default function ArchivePage() {
   const alexProgress = getUserProgress('alexander');
   const dariaProgress = getUserProgress('daria');
 
-  const filtered = artists.filter((a) => filter === 'all' || a.country === filter);
+  const filteredArtists = useMemo(
+    () => artists.filter((artist) => filter === 'all' || artist.country === filter),
+    [filter]
+  );
 
   return (
     <div className="space-y-6">
@@ -20,7 +25,7 @@ export default function ArchivePage() {
         <h1 className="text-3xl font-bold text-dark">Архив художников</h1>
         <div className="flex items-center gap-2">
           <Filter className="w-4 h-4 text-dark/50" />
-          {(['all', 'Россия', 'Италия'] as const).map((f) => (
+          {COUNTRY_FILTERS.map((f) => (
             <button
               key={f}
               onClick={() => setFilter(f)}
@@ -37,7 +42,7 @@ export default function ArchivePage() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {filtered.map((artist, i) => {
+        {filteredArtists.map((artist, i) => {
           const completedAlex = alexProgress.completedArtists.includes(artist.id);
           const completedDaria = dariaProgress.completedArtists.includes(artist.id);
 

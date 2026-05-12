@@ -24,23 +24,23 @@ interface ProgressState {
   getWeeklyScore: (userId: UserId, weekNumber: number) => number;
 }
 
-const defaultProgress: UserProgress = {
+const createDefaultProgress = (): UserProgress => ({
   totalScore: 0,
   completedArtists: [],
   weekProgress: {},
-};
+});
 
 export const useProgressStore = create<ProgressState>()(
   persist(
     (set, get) => ({
       progress: {
-        alexander: { ...defaultProgress },
-        daria: { ...defaultProgress },
+        alexander: createDefaultProgress(),
+        daria: createDefaultProgress(),
       },
 
       addScore: (userId, artistId, weekNumber, points) => {
         set((state) => {
-          const userProgress = state.progress[userId] || { ...defaultProgress };
+          const userProgress = state.progress[userId] || createDefaultProgress();
           const weekProg = userProgress.weekProgress[weekNumber] || {
             weekNumber,
             artistId,
@@ -48,22 +48,23 @@ export const useProgressStore = create<ProgressState>()(
             totalQuiz: 0,
             score: 0,
           };
-
-          weekProg.score += points;
-          userProgress.totalScore += points;
-
-          if (!userProgress.completedArtists.includes(artistId)) {
-            userProgress.completedArtists.push(artistId);
-          }
+          const completedArtists = userProgress.completedArtists.includes(artistId)
+            ? userProgress.completedArtists
+            : [...userProgress.completedArtists, artistId];
 
           return {
             progress: {
               ...state.progress,
               [userId]: {
                 ...userProgress,
+                totalScore: userProgress.totalScore + points,
+                completedArtists,
                 weekProgress: {
                   ...userProgress.weekProgress,
-                  [weekNumber]: weekProg,
+                  [weekNumber]: {
+                    ...weekProg,
+                    score: weekProg.score + points,
+                  },
                 },
               },
             },
@@ -73,7 +74,7 @@ export const useProgressStore = create<ProgressState>()(
 
       markQuizCompleted: (userId, artistId, weekNumber, totalQuiz) => {
         set((state) => {
-          const userProgress = state.progress[userId] || { ...defaultProgress };
+          const userProgress = state.progress[userId] || createDefaultProgress();
           const weekProg = userProgress.weekProgress[weekNumber] || {
             weekNumber,
             artistId,
@@ -81,8 +82,6 @@ export const useProgressStore = create<ProgressState>()(
             totalQuiz,
             score: 0,
           };
-          weekProg.quizCompleted += 1;
-          weekProg.totalQuiz = totalQuiz;
 
           return {
             progress: {
@@ -91,7 +90,11 @@ export const useProgressStore = create<ProgressState>()(
                 ...userProgress,
                 weekProgress: {
                   ...userProgress.weekProgress,
-                  [weekNumber]: weekProg,
+                  [weekNumber]: {
+                    ...weekProg,
+                    quizCompleted: weekProg.quizCompleted + 1,
+                    totalQuiz,
+                  },
                 },
               },
             },
@@ -100,11 +103,11 @@ export const useProgressStore = create<ProgressState>()(
       },
 
       getUserProgress: (userId) => {
-        return get().progress[userId] || { ...defaultProgress };
+        return get().progress[userId] || createDefaultProgress();
       },
 
       getWeeklyScore: (userId, weekNumber) => {
-        const userProgress = get().progress[userId] || { ...defaultProgress };
+        const userProgress = get().progress[userId] || createDefaultProgress();
         return userProgress.weekProgress[weekNumber]?.score || 0;
       },
     }),

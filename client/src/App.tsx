@@ -8,16 +8,16 @@ import DuelPage from './pages/DuelPage';
 import ArchivePage from './pages/ArchivePage';
 import { useUserStore, USERS } from './store/userStore';
 
+const NAV_ITEMS = [
+  { path: '/', icon: Home, label: 'Главная' },
+  { path: '/archive', icon: Trophy, label: 'Архив' },
+  { path: '/duel', icon: Swords, label: 'Дуэль' },
+] as const;
+
 function Header() {
   const location = useLocation();
   const { currentUser, setCurrentUser } = useUserStore();
   const user = USERS[currentUser];
-
-  const navItems = [
-    { path: '/', icon: Home, label: 'Главная' },
-    { path: '/archive', icon: Trophy, label: 'Архив' },
-    { path: '/duel', icon: Swords, label: 'Дуэль' },
-  ];
 
   return (
     <header className="sticky top-0 z-50 bg-cream/90 backdrop-blur-md border-b border-border">
@@ -28,7 +28,7 @@ function Header() {
         </Link>
 
         <nav className="flex items-center gap-1 sm:gap-2">
-          {navItems.map((item) => {
+          {NAV_ITEMS.map((item) => {
             const active = location.pathname === item.path;
             return (
               <Link

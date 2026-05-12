@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useCallback, useMemo, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, CheckCircle2, XCircle, Trophy, RotateCcw } from 'lucide-react';
@@ -10,25 +10,42 @@ import { playCorrectSound, playWrongSound } from '../utils/sound';
 import { triggerSmallConfetti } from '../utils/confetti';
 import SafeImage from '../components/SafeImage';
 
-function shuffleArray<T>(array: T[]): T[] {
+function hashString(value: string) {
+  let hash = 0;
+  for (let i = 0; i < value.length; i++) {
+    hash = (hash * 31 + value.charCodeAt(i)) >>> 0;
+  }
+  return hash || 1;
+}
+
+function seededRandom(seed: number) {
+  let state = seed;
+  return () => {
+    state = (state * 1664525 + 1013904223) >>> 0;
+    return state / 0x100000000;
+  };
+}
+
+function shuffleArray<T>(array: T[], random = Math.random): T[] {
   const arr = [...array];
   for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
+    const j = Math.floor(random() * (i + 1));
     [arr[i], arr[j]] = [arr[j], arr[i]];
   }
   return arr;
 }
 
-function generateQuizForArtist(artistId: string): QuizQuestion[] {
+function generateQuizForArtist(artistId: string, attempt: number): QuizQuestion[] {
   const artist = getArtistById(artistId);
   if (!artist) return [];
 
+  const random = seededRandom(hashString(`${artistId}:${attempt}`));
   const questions: QuizQuestion[] = [];
 
   // Type 1: Guess artist by painting
   artist.paintings.forEach((_painting, idx) => {
     const otherArtists = artists.filter((a) => a.id !== artistId).slice(0, 3);
-    const options = shuffleArray([artist.name, ...otherArtists.map((a) => a.name)]);
+    const options = shuffleArray([artist.name, ...otherArtists.map((a) => a.name)], random);
     questions.push({
       type: 'guessArtistByPainting',
       paintingId: idx,
@@ -49,7 +66,7 @@ function generateQuizForArtist(artistId: string): QuizQuestion[] {
   // Type 3: Guess artist by style
   artist.styleFeatures.forEach((feature) => {
     const otherArtists = artists.filter((a) => a.id !== artistId).slice(0, 3);
-    const options = shuffleArray([artist.name, ...otherArtists.map((a) => a.name)]);
+    const options = shuffleArray([artist.name, ...otherArtists.map((a) => a.name)], random);
     questions.push({
       type: 'guessArtistByStyle',
       question: `Какому художнику принадлежит черта стиля: «${feature}»?`,
@@ -58,7 +75,7 @@ function generateQuizForArtist(artistId: string): QuizQuestion[] {
     });
   });
 
-  return shuffleArray(questions).slice(0, 5);
+  return shuffleArray(questions, random).slice(0, 5);
 }
 
 export default function QuizPage() {
@@ -68,7 +85,10 @@ export default function QuizPage() {
   const { addScore, markQuizCompleted } = useProgressStore();
   const weekNumber = getWeekNumber();
 
-  const [questions, setQuestions] = useState<QuizQuestion[]>([]);
+  const [quizAttempt, setQuizAttempt] = useState(0);
+  const questions = useMemo(() => {
+    return artist ? generateQuizForArtist(artist.id, quizAttempt) : [];
+  }, [artist, quizAttempt]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [showResult, setShowResult] = useState(false);
@@ -76,12 +96,6 @@ export default function QuizPage() {
   const [isCorrect, setIsCorrect] = useState(false);
   const [finished, setFinished] = useState(false);
   const scoreRef = useRef(0);
-
-  useEffect(() => {
-    if (artist) {
-      setQuestions(generateQuizForArtist(artist.id));
-    }
-  }, [artist]);
 
   const handleAnswer = useCallback(
     (answerIndex: number) => {
@@ -121,19 +135,18 @@ export default function QuizPage() {
         markQuizCompleted(currentUser, artist.id, weekNumber, questions.length);
       }
     }
-  }, [currentIndex, questions.length, artist, currentUser, weekNumber, score, isCorrect, addScore, markQuizCompleted]);
+  }, [currentIndex, questions.length, artist, currentUser, weekNumber, addScore, markQuizCompleted]);
 
   const handleRestart = useCallback(() => {
-    if (artist) {
-      setQuestions(generateQuizForArtist(artist.id));
-    }
+    setQuizAttempt((attempt) => attempt + 1);
     setCurrentIndex(0);
     setSelectedAnswer(null);
     setShowResult(false);
+    setIsCorrect(false);
     setScore(0);
     scoreRef.current = 0;
     setFinished(false);
-  }, [artist]);
+  }, []);
 
   if (!artist) {
     return (

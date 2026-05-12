@@ -171,11 +171,13 @@ export default function ArtistPage() {
               className="bg-white rounded-2xl overflow-hidden max-w-3xl w-full max-h-[90vh] overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
             >
-              <SafeImage
-                src={artist.paintings[selectedPainting].url}
-                alt={artist.paintings[selectedPainting].title}
-                className="w-full aspect-video object-cover"
-              />
+              <div className="bg-light flex items-center justify-center">
+                <SafeImage
+                  src={artist.paintings[selectedPainting].url}
+                  alt={artist.paintings[selectedPainting].title}
+                  className="w-full max-h-[62vh] object-contain"
+                />
+              </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-dark">{artist.paintings[selectedPainting].title}</h3>
                 <p className="text-terracotta font-medium">{artist.paintings[selectedPainting].year}</p>

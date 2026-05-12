@@ -177,10 +177,10 @@ export const artists: Artist[] = [
         description: 'Солнечный свет, молодость и непринуждённость — шедевр русского импрессионизма.'
       },
       {
-        title: 'Захарка',
-        year: '1905',
+        title: 'Мика Морозов',
+        year: '1901',
         url: '/images/Valentin_Serov_-_The_Boy_with_a_Straw_Hat_-_Google_Art_Project.jpg',
-        description: 'Энергичные мазки и свежесть восприятия, характерные для позднего творчества художника.'
+        description: 'Живой детский портрет с ощущением мгновенного движения и удивления.'
       },
       {
         title: 'Портрет Феликса Юсупова',
@@ -249,10 +249,10 @@ export const artists: Artist[] = [
         description: 'Мифологический образ, полный языческой силы и декоративной выразительности.'
       },
       {
-        title: 'Цветок сказки',
+        title: 'Цветы',
         year: '1895',
         url: '/images/Vrubel_fairytale_flower.jpg',
-        description: 'Абстрактный, гипнотический цветок, предвосхищающий модерн и ар-деко.'
+        description: 'Декоративная цветочная композиция с характерной для Врубеля мозаичной фактурой.'
       }
     ],
     styleFeatures: [
@@ -425,7 +425,7 @@ export const artists: Artist[] = [
       {
         title: 'Афинская школа',
         year: '1509–1511',
-        url: '/images/%22The_School_of_Athens%22_by_Raffaello_Sanzio_da_Urbino.jpg',
+        url: '/images/The_School_of_Athens_by_Raffaello_Sanzio_da_Urbino.jpg',
         description: 'Собрание великих философов античности — символ знания, гармонии и перспективы.'
       },
       {

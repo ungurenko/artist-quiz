@@ -1,0 +1,663 @@
+export interface Artist {
+  id: string;
+  name: string;
+  years: string;
+  country: string;
+  portrait: string;
+  facts: string[];
+  paintings: Painting[];
+  styleFeatures: string[];
+  quiz: QuizQuestion[];
+}
+
+export interface Painting {
+  title: string;
+  year: string;
+  url: string;
+  description: string;
+}
+
+export type QuizType = 'guessArtistByPainting' | 'trueFalse' | 'guessArtistByStyle';
+
+export interface QuizQuestion {
+  type: QuizType;
+  paintingId?: number;
+  question?: string;
+  options?: string[];
+  correct: number;
+}
+
+export const artists: Artist[] = [
+  {
+    id: 'repin',
+    name: 'Илья Репин',
+    years: '1844–1930',
+    country: 'Россия',
+    portrait: '/images/Ilja_Jefimowitsch_Repin_010.jpg',
+    facts: [
+      'Родился в городе Чугуеве Харьковской губернии в семье военного поселенца.',
+      'Поступил в Императорскую Академию художеств в Петербурге в 1863 году.',
+      'Картина «Бурлаки на Волге» принесла ему всемирную известность в 1873 году.',
+      'Принадлежал к течению передвижников — художников, выставлявшихся по городам России.',
+      'Написал портреты многих известных людей: Толстого, Мусоргского, Горького.',
+      'В 1890-х годах купил усадьбу «Пенаты» в Финляндии, где жил до конца жизни.',
+      'Его работы хранятся в Третьяковской галерее, Русском музее и крупнейших музеях мира.'
+    ],
+    paintings: [
+      {
+        title: 'Бурлаки на Волге',
+        year: '1870–1873',
+        url: '/images/Ilja_Jefimowitsch_Repin_013.jpg',
+        description: 'Эпическое полотно о тяжёлом труде бурлаков, ставшее символом русского реализма.'
+      },
+      {
+        title: 'Иван Грозный и сын его Иван',
+        year: '1883–1885',
+        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Ivan_the_Terrible_and_his_son%2C_by_Repin.jpg/1200px-Ivan_the_Terrible_and_his_son%2C_by_Repin.jpg',
+        description: 'Драматическая сцена, показывающая безумие царя после убийства сына.'
+      },
+      {
+        title: 'Не ждали',
+        year: '1884–1888',
+        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/RepinUnexpectedVisitors.jpg/1200px-RepinUnexpectedVisitors.jpg',
+        description: 'Мгновенное возвращение ссыльного революционера в семейный круг.'
+      },
+      {
+        title: 'Запорожцы пишут письмо турецкому султану',
+        year: '1880–1891',
+        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Reply_of_the_Zaporozhian_Cossacks.jpg/1200px-Reply_of_the_Zaporozhian_Cossacks.jpg',
+        description: 'Яркая, полная юмора сцена, воплощающая дух украинского казачества.'
+      }
+    ],
+    styleFeatures: [
+      'Психологическая глубина и драматизм в изображении персонажей',
+      'Точность социальной детали и бытового реализма',
+      'Мастерство светотеневого моделирования, вытянутых композиций'
+    ],
+    quiz: [
+      {
+        type: 'guessArtistByPainting',
+        paintingId: 0,
+        options: ['Илья Репин', 'Василий Суриков', 'Виктор Васнецов', 'Валентин Серов'],
+        correct: 0
+      },
+      {
+        type: 'trueFalse',
+        question: 'Илья Репин был членом товарищества передвижных художественных выставок.',
+        correct: 1
+      },
+      {
+        type: 'guessArtistByStyle',
+        question: 'Какой художник прославился психологически глубокими историческими и бытовыми сценами русской жизни?',
+        options: ['Илья Репин', 'Иван Айвазовский', 'Михаил Врубель', 'Исаак Левитан'],
+        correct: 0
+      }
+    ]
+  },
+  {
+    id: 'aivazovsky',
+    name: 'Иван Айвазовский',
+    years: '1817–1900',
+    country: 'Россия',
+    portrait: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Aivazovsky_-_Self-portrait_-_1881.jpg/600px-Aivazovsky_-_Self-portrait_-_1881.jpg',
+    facts: [
+      'Родился в Феодосии в армянской семье. Всю жизнь оставался верен родному городу.',
+      'Окончил Императорскую Академию художеств с большой золотой медалью.',
+      'Создал более 6000 картин, большинство из которых посвящены морю.',
+      'Был морским офицером и участвовал в нескольких военных экспедициях.',
+      'Его картина «Девятый вал» считается одним из лучших морских пейзажей в мировой живописи.',
+      'Использовал технику живописи по памяти, почти не делая этюдов с натуры.',
+      'Финансировал строительство школ, больниц и развитие Феодосии.'
+    ],
+    paintings: [
+      {
+        title: 'Девятый вал',
+        year: '1850',
+        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Aivazovsky_-_The_Ninth_Wave_-_Google_Art_Project.jpg/1200px-Aivazovsky_-_The_Ninth_Wave_-_Google_Art_Project.jpg',
+        description: 'Символ борьбы человека со стихией: кораблекрушенцы на обломках мачты среди гигантских волн.'
+      },
+      {
+        title: 'Лунная ночь на Чёрном море',
+        year: '1859',
+        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Aivazovsky%2C_Ivan_-_Moonlit_Night_on_the_Black_Sea.jpg/1200px-Aivazovsky%2C_Ivan_-_Moonlit_Night_on_the_Black_Sea.jpg',
+        description: 'Ослепительная игра лунного света на водной глади, ощущение бесконечного покоя.'
+      },
+      {
+        title: 'Радуга',
+        year: '1877',
+        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Ivan_Aivazovsky_-_The_Rainbow_%281877%29.jpg/1200px-Ivan_Aivazovsky_-_The_Rainbow_%281877%29.jpg',
+        description: 'Контраст между мощью бури и тонкой, едва заметной радугой — символ надежды.'
+      }
+    ],
+    styleFeatures: [
+      'Безупречная передача света, особенно лунного и солнечного, на водной поверхности',
+      'Романтический пафос и драматизм морских стихий',
+      'Уникальная способность писать по памяти с фотографической точностью'
+    ],
+    quiz: [
+      {
+        type: 'guessArtistByPainting',
+        paintingId: 0,
+        options: ['Иван Шишкин', 'Илья Репин', 'Иван Айвазовский', 'Исаак Левитан'],
+        correct: 2
+      },
+      {
+        type: 'trueFalse',
+        question: 'Айвазовский написал более 6000 картин, большинство из которых посвящены морю.',
+        correct: 1
+      },
+      {
+        type: 'guessArtistByStyle',
+        question: 'Какой художник-самоучка по памяти создавал ослепительные морские пейзажи с игрой света?',
+        options: ['Илья Репин', 'Иван Айвазовский', 'Валентин Серов', 'Михаил Врубель'],
+        correct: 1
+      }
+    ]
+  },
+  {
+    id: 'serov',
+    name: 'Валентин Серов',
+    years: '1865–1911',
+    country: 'Россия',
+    portrait: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Serov_by_Repin.jpg/600px-Serov_by_Repin.jpg',
+    facts: [
+      'Сын композитора и пианистки, рос в творческой атмосфере: семья дружила с Репиным.',
+      'Учился у Репина и в Академии художеств, но рано обрёл собственный стиль.',
+      'Его «Девочка с персиками» стала иконой русского портрета и импрессионизма.',
+      'Работал в разных жанрах: портрет, пейзаж, бытовой сюжет, театральный плакат.',
+      'Преподавал в Училище живописи, среди его учеников — будущие авангардисты.',
+      'В последние годы увлёкся театром и оформлением балетных спектаклей.',
+      'Умер молодым, в 46 лет, оставив огромное влияние на развитие русского искусства.'
+    ],
+    paintings: [
+      {
+        title: 'Девочка с персиками',
+        year: '1887',
+        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/SerovDevochkaSPersikami.jpg/800px-SerovDevochkaSPersikami.jpg',
+        description: 'Солнечный свет, молодость и непринуждённость — шедевр русского импрессионизма.'
+      },
+      {
+        title: 'Захарка',
+        year: '1905',
+        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Valentin_Serov_-_The_Boy_with_a_Straw_Hat_-_Google_Art_Project.jpg/800px-Valentin_Serov_-_The_Boy_with_a_Straw_Hat_-_Google_Art_Project.jpg',
+        description: 'Энергичные мазки и свежесть восприятия, характерные для позднего творчества художника.'
+      },
+      {
+        title: 'Портрет Феликса Юсупова',
+        year: '1903',
+        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Serov_Yusupov.jpg/800px-Serov_Yusupov.jpg',
+        description: 'Аристократический портрет с психологической напряжённостью и декоративной выразительностью.'
+      }
+    ],
+    styleFeatures: [
+      'Импрессионистичная игра света и цвета, особенно в ранних работах',
+      'Психологическое проникновение в характер модели',
+      'Смелые, энергичные мазки и декоративная обобщённость в поздний период'
+    ],
+    quiz: [
+      {
+        type: 'guessArtistByPainting',
+        paintingId: 0,
+        options: ['Илья Репин', 'Валентин Серов', 'Исаак Левитан', 'Михаил Врубель'],
+        correct: 1
+      },
+      {
+        type: 'trueFalse',
+        question: 'Валентин Серов был учеником Ильи Репина.',
+        correct: 1
+      },
+      {
+        type: 'guessArtistByStyle',
+        question: 'Какой художник написал знаменитый портрет «Девочка с персиками»?',
+        options: ['Илья Репин', 'Валентин Серов', 'Иван Айвазовский', 'Константин Коровин'],
+        correct: 1
+      }
+    ]
+  },
+  {
+    id: 'vrubel',
+    name: 'Михаил Врубель',
+    years: '1856–1910',
+    country: 'Россия',
+    portrait: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Vrubel_by_Braz.jpg/600px-Vrubel_by_Braz.jpg',
+    facts: [
+      'Родился в Омске, отец служил военным. Детство прошло в разных гарнизонах.',
+      'Окончил юридический факультет Петербургского университета, прежде чем стать художником.',
+      'Создал монументальную керамическую панно для особняка Морозова в Москве.',
+      'Его «Демон» стал символом серебряного века и русского символизма.',
+      'Страдал психическим расстройством, провёл последние годы в психиатрической лечебнице.',
+      'Его техника отличалась мозаичностью, рельефной фактурой красочного слоя.',
+      'При жизни критика не приняла его творчество, признание пришло уже после смерти.'
+    ],
+    paintings: [
+      {
+        title: 'Демон сидящий',
+        year: '1890',
+        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Mikhail_Vrubel_-_The_Demon_Seated_-_Google_Art_Project.jpg/800px-Mikhail_Vrubel_-_The_Demon_Seated_-_Google_Art_Project.jpg',
+        description: 'Мрачный, величественный образ тоски и разочарования — центральное произведение символизма.'
+      },
+      {
+        title: 'Царевна-Лебедь',
+        year: '1900',
+        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Vrubel_swan_princess.jpg/800px-Vrubel_swan_princess.jpg',
+        description: 'Волшебный, загадочный образ из оперы Римского-Корсакова, написанный в лечебнице.'
+      },
+      {
+        title: 'Пан',
+        year: '1899',
+        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Vrubel_Pan.jpg/800px-Vrubel_Pan.jpg',
+        description: 'Мифологический образ, полный языческой силы и декоративной выразительности.'
+      },
+      {
+        title: 'Цветок сказки',
+        year: '1895',
+        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Vrubel_fairytale_flower.jpg/800px-Vrubel_fairytale_flower.jpg',
+        description: 'Абстрактный, гипнотический цветок, предвосхищающий модерн и ар-деко.'
+      }
+    ],
+    styleFeatures: [
+      'Мозаичная, рельефная фактура красочного слоя, напоминающая эмаль',
+      'Символический, мифологический характер образов',
+      'Контрастные, насыщенные цвета и декоративная обобщённость форм'
+    ],
+    quiz: [
+      {
+        type: 'guessArtistByPainting',
+        paintingId: 0,
+        options: ['Михаил Врубель', 'Виктор Васнецов', 'Илья Репин', 'Николай Рерих'],
+        correct: 0
+      },
+      {
+        type: 'trueFalse',
+        question: 'Михаил Врубель сначала окончил юридический факультет, а потом стал художником.',
+        correct: 1
+      },
+      {
+        type: 'guessArtistByStyle',
+        question: 'Какой художник создал мозаичные, эмалевые полотна с образом Демона?',
+        options: ['Николай Рерих', 'Михаил Врубель', 'Валентин Серов', 'Исаак Левитан'],
+        correct: 1
+      }
+    ]
+  },
+  {
+    id: 'levitan',
+    name: 'Исаак Левитан',
+    years: '1860–1900',
+    country: 'Россия',
+    portrait: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Levitan_Self_portrait.jpg/600px-Levitan_Self_portrait.jpg',
+    facts: [
+      'Родился в небогатой еврейской семье в Кибартах, ныне Литва.',
+      'Учился в Московском училище живописи, где его заметили преподаватели.',
+      'Его пейзажи называли «пейзажами настроения» — они передают внутреннее состояние.',
+      'Близко дружил с писателем Антоном Чеховым, рисовал иллюстрации к его книгам.',
+      'Картина «Над вечным покоем» вызвала скандал на выставке из-за своей депрессивности.',
+      'Страдал от депрессии и болезни сердца, умер в 39 лет.',
+      'Его работы оказали огромное влияние на развитие русского пейзажа и символизма.'
+    ],
+    paintings: [
+      {
+        title: 'Над вечным покоем',
+        year: '1894',
+        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Levitan_nad_vechnym_pokoyem.jpg/1200px-Levitan_nad_vechnym_pokoyem.jpg',
+        description: 'Тихое, величественное озеро под грозовыми тучами — размышление о вечности.'
+      },
+      {
+        title: 'Золотая осень',
+        year: '1895',
+        url: '/images/Levitan_Zolotaya_Osen.jpg',
+        description: 'Пленэрный пейзаж с ослепительной игрой золотистых и голубых тонов.'
+      },
+      {
+        title: 'Владимирка',
+        year: '1892',
+        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Levitan_Vladimirka.jpg/1200px-Levitan_Vladimirka.jpg',
+        description: 'Широкая дорога, уходящая вдаль, — трагический символ пути ссыльных в Сибирь.'
+      }
+    ],
+    styleFeatures: [
+      '«Пейзаж настроения» — передача внутреннего эмоционального состояния через природу',
+      'Мягкая, лирическая цветовая гамма с преобладанием серебристых и золотистых тонов',
+      'Монументальные, обобщённые композиции с глубоким пространственным звучанием'
+    ],
+    quiz: [
+      {
+        type: 'guessArtistByPainting',
+        paintingId: 1,
+        options: ['Иван Шишкин', 'Исаак Левитан', 'Иван Айвазовский', 'Архип Куинджи'],
+        correct: 1
+      },
+      {
+        type: 'trueFalse',
+        question: 'Исаак Левитан был близким другом писателя Антона Чехова.',
+        correct: 1
+      },
+      {
+        type: 'guessArtistByStyle',
+        question: 'Какой художник создавал «пейзажи настроения» с лирической, меланхоличной атмосферой?',
+        options: ['Иван Шишкин', 'Исаак Левитан', 'Илья Репин', 'Валентин Серов'],
+        correct: 1
+      }
+    ]
+  },
+  {
+    id: 'leonardo',
+    name: 'Леонардо да Винчи',
+    years: '1452–1519',
+    country: 'Италия',
+    portrait: '/images/Leonardo_self.jpg',
+    facts: [
+      'Родился в небольшой деревне Анкиано близ Флоренции, был внебрачным сыном нотариуса.',
+      'Был не только художником, но и изобретателем, анатомом, инженером и музыкантом.',
+      'Картина «Мона Лиза» находится в Лувре и считается самой известной картиной мира.',
+      'Использовал технику «сфумато» — мягкие, расплывчатые переходы между тонами.',
+      'Написал всего около 15 картин, но каждая стала шедевром.',
+      'Провёл последние три года жизни во Франции при дворе короля Франциска I.',
+      'Его блокноты содержат рисунки парашютов, танков, вертолётов и теорий полёта.'
+    ],
+    paintings: [
+      {
+        title: 'Мона Лиза',
+        year: 'ок. 1503–1519',
+        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/800px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg',
+        description: 'Загадочная улыбка, безупречная перспектива и техника сфумато — икона Возрождения.'
+      },
+      {
+        title: 'Тайная вечеря',
+        year: '1495–1498',
+        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/The_Last_Supper_-_Leonardo_Da_Vinci_-_High_Resolution_32x16.jpg/1200px-The_Last_Supper_-_Leonardo_Da_Vinci_-_High_Resolution_32x16.jpg',
+        description: 'Момент, когда Христос объявляет о предательстве — шедевр композиции и психологии.'
+      },
+      {
+        title: 'Дама с горностаем',
+        year: 'ок. 1489–1490',
+        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Lady_with_an_Ermine_-_Leonardo_da_Vinci_-_Google_Art_Project.jpg/800px-Lady_with_an_Ermine_-_Leonardo_da_Vinci_-_Google_Art_Project.jpg',
+        description: 'Портрет Чечилии Галлерани с тонким психологическим выражением и символикой.'
+      }
+    ],
+    styleFeatures: [
+      'Техника сфумато — мягкие, дымчатые переходы тонов без резких контуров',
+      'Научный подход к анатомии, перспективе и светотени',
+      'Психологическая глубина и загадочность изображённых персонажей'
+    ],
+    quiz: [
+      {
+        type: 'guessArtistByPainting',
+        paintingId: 0,
+        options: ['Рафаэль', 'Леонардо да Винчи', 'Микеланджело', 'Боттичелли'],
+        correct: 1
+      },
+      {
+        type: 'trueFalse',
+        question: 'Леонардо да Винчи изобрёл технику «сфумато» — мягкие, расплывчатые переходы тонов.',
+        correct: 1
+      },
+      {
+        type: 'guessArtistByStyle',
+        question: 'Какой итальянский мастер был одновременно художником, анатомом, инженером и изобретателем?',
+        options: ['Микеланджело', 'Леонардо да Винчи', 'Рафаэль', 'Караваджо'],
+        correct: 1
+      }
+    ]
+  },
+  {
+    id: 'raphael',
+    name: 'Рафаэль Санти',
+    years: '1483–1520',
+    country: 'Италия',
+    portrait: '/images/Raffaello_Sanzio.jpg',
+    facts: [
+      'Родился в Урбино, рано потерял отца, который тоже был художником.',
+      'Учился у Перуджино, но быстро превзошёл своего учителя.',
+      'Работал в Риме при дворе папы Юлия II, где создал свои главные шедевры.',
+      '«Афинская школа» — величайшая фреска эпохи Возрождения, символ гармонии и знания.',
+      'Отличался невероятной работоспособностью и вёл огромную мастерскую.',
+      'Умер в 37 лет от лихорадки, оставив незавершённую «Трансфигурацию».',
+      'Считается эталоном совершенства в искусстве: гармония, красота, баланс.'
+    ],
+    paintings: [
+      {
+        title: 'Сикстинская Мадонна',
+        year: '1512–1514',
+        url: '/images/Raffael_048.jpg',
+        description: 'Величественный образ Девы Марии, спускающейся с небес — вершина религиозной живописи.'
+      },
+      {
+        title: 'Афинская школа',
+        year: '1509–1511',
+        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/%22The_School_of_Athens%22_by_Raffaello_Sanzio_da_Urbino.jpg/1200px-%22The_School_of_Athens%22_by_Raffaello_Sanzio_da_Urbino.jpg',
+        description: 'Собрание великих философов античности — символ знания, гармонии и перспективы.'
+      },
+      {
+        title: 'Трансфигурация',
+        year: '1516–1520',
+        url: '/images/Transfiguration_Raphael.jpg',
+        description: 'Последнее, незавершённое полотно — соединение небесного и земного в единой композиции.'
+      }
+    ],
+    styleFeatures: [
+      'Идеальная гармония композиции, баланс и ясность форм',
+      'Мягкое моделирование светом, безупречная перспектива',
+      'Классическая красота и человечность изображённых фигур'
+    ],
+    quiz: [
+      {
+        type: 'guessArtistByPainting',
+        paintingId: 1,
+        options: ['Микеланджело', 'Рафаэль', 'Леонардо да Винчи', 'Боттичелли'],
+        correct: 1
+      },
+      {
+        type: 'trueFalse',
+        question: 'Рафаэль умер молодым, в 37 лет, оставив незавершённую «Трансфигурацию».',
+        correct: 1
+      },
+      {
+        type: 'guessArtistByStyle',
+        question: 'Какой художник Высокого Возрождения прославился идеальной гармонией и «Афинской школой»?',
+        options: ['Леонардо да Винчи', 'Рафаэль', 'Микеланджело', 'Тициан'],
+        correct: 1
+      }
+    ]
+  },
+  {
+    id: 'michelangelo',
+    name: 'Микеланджело Буонарроти',
+    years: '1475–1564',
+    country: 'Италия',
+    portrait: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Michelangelo_Daniele_da_Volterra_%28dettaglio%29.jpg/600px-Michelangelo_Daniele_da_Volterra_%28dettaglio%29.jpg',
+    facts: [
+      'Родился в Капрезе, но рос во Флоренции, где его заметил Лоренцо Великолепный.',
+      'Считал себя прежде всего скульптором, а живописью занимался с неохотой.',
+      'Создал фреску «Сотворение Адама» на потолке Сикстинской капеллы за 4 года.',
+      'Его «Давид» стал символом Флоренции и идеалом мужской красоты.',
+      'Работал над куполом собора Святого Петра в Риме до самой смерти.',
+      'Был известным поэтом — сохранилось более 300 его стихотворений.',
+      'Прожил почти 89 лет — невероятно долгую жизнь для того времени.'
+    ],
+    paintings: [
+      {
+        title: 'Сотворение Адама',
+        year: '1508–1512',
+        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Michelangelo_-_Creation_of_Adam_%28cropped%29.jpg/1200px-Michelangelo_-_Creation_of_Adam_%28cropped%29.jpg',
+        description: 'Знаменитый жест рук, соединяющий божественное и человеческое — визитная карточка Возрождения.'
+      },
+      {
+        title: 'Давид',
+        year: '1501–1504',
+        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Michelangelo_David_-_3.jpg/800px-Michelangelo_David_-_3.jpg',
+        description: 'Пятиметровая мраморная скульптура, воплощающая юношескую красоту и готовность к бою.'
+      },
+      {
+        title: 'Пьета',
+        year: '1498–1499',
+        url: "/wikimedia/wikipedia/commons/thumb/1/1f/Michelangelo%27s_Pieta_5450_cut_out_black.jpg/800px-Michelangelo%27s_Pieta_5450_cut_out_black.jpg",
+        description: 'Дева Мария с телом Христа — шедевр мраморной пластики, созданный в 23 года.'
+      }
+    ],
+    styleFeatures: [
+      'Монументальность и мускулистость фигур, напоминающих античных героев',
+      'Мастерство передачи человеческого тела в напряжении и движении',
+      'Драматизм, эмоциональная напряжённость и героический пафос'
+    ],
+    quiz: [
+      {
+        type: 'guessArtistByPainting',
+        paintingId: 0,
+        options: ['Рафаэль', 'Леонардо да Винчи', 'Микеланджело', 'Боттичелли'],
+        correct: 2
+      },
+      {
+        type: 'trueFalse',
+        question: 'Микеланджело считал себя прежде всего скульптором, а не живописцем.',
+        correct: 1
+      },
+      {
+        type: 'guessArtistByStyle',
+        question: 'Какой мастер Возрождения создал фреску «Сотворение Адама» на потолке Сикстинской капеллы?',
+        options: ['Рафаэль', 'Леонардо да Винчи', 'Микеланджело', 'Караваджо'],
+        correct: 2
+      }
+    ]
+  },
+  {
+    id: 'botticelli',
+    name: 'Сандро Боттичелли',
+    years: '1445–1510',
+    country: 'Италия',
+    portrait: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Sandro_Botticelli_083.jpg/600px-Sandro_Botticelli_083.jpg',
+    facts: [
+      'Родился во Флоренции, его настоящее имя — Алессандро ди Мариано ди Ванни Филипепи.',
+      'Был учеником Филиппо Липпи, откуда перенял изящность линий и поэтичность.',
+      'Принадлежал к кругу Лоренцо Великолепного и семьи Медичи.',
+      '«Рождение Венеры» и «Весна» — две самые известные картины художника.',
+      'В поздние годы под влиянием Савонаролы стал религиозным мистиком.',
+      'Его работы были забыты на века и вновь открыты лишь в XIX веке.',
+      'Использовал нео-платоническую философию как основу для своих мифологических сцен.'
+    ],
+    paintings: [
+      {
+        title: 'Рождение Венеры',
+        year: 'ок. 1484–1486',
+        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg/1200px-Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg',
+        description: 'Богиня любви, рождённая из пены морской, — символ красоты и гармонии эпохи Возрождения.'
+      },
+      {
+        title: 'Весна',
+        year: 'ок. 1477–1482',
+        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Sandro_Botticelli_-_La_Primavera_-_Google_Art_Project.jpg/1200px-Sandro_Botticelli_-_La_Primavera_-_Google_Art_Project.jpg',
+        description: 'Аллегория весны с Венерой, Тремя Грациями и Зефиром — поэтичная нео-платоническая фантазия.'
+      },
+      {
+        title: 'Мадонна Магнификат',
+        year: '1483',
+        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Botticelli_Madonna_of_the_Magnificat.jpg/800px-Botticelli_Madonna_of_the_Magnificat.jpg',
+        description: 'Круглая композиция с Мадонной, пишущей магнификат — изящество и духовность.'
+      }
+    ],
+    styleFeatures: [
+      'Изящные, текучие линии контуров, напоминающие готическую грацию',
+      'Плоскостность пространства и декоративность композиции',
+      'Нео-платоническая символика, соединение античности и христианства'
+    ],
+    quiz: [
+      {
+        type: 'guessArtistByPainting',
+        paintingId: 0,
+        options: ['Рафаэль', 'Боттичелли', 'Леонардо да Винчи', 'Тициан'],
+        correct: 1
+      },
+      {
+        type: 'trueFalse',
+        question: 'Боттичелли был забыт на века и вновь открыт только в XIX веке.',
+        correct: 1
+      },
+      {
+        type: 'guessArtistByStyle',
+        question: 'Какой флорентийский мастер написал «Рождение Венеры» и «Весну»?',
+        options: ['Рафаэль', 'Боттичелли', 'Микеланджело', 'Караваджо'],
+        correct: 1
+      }
+    ]
+  },
+  {
+    id: 'caravaggio',
+    name: 'Караваджо',
+    years: '1571–1610',
+    country: 'Италия',
+    portrait: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Bacchus_by_Caravaggio_2.jpg/600px-Bacchus_by_Caravaggio_2.jpg',
+    facts: [
+      'Родился в городе Караваджо близ Милана, откуда и получил прозвище.',
+      'Стал основоположником европейского барокко и революционером живописи.',
+      'Использовал моделей с улицы — проституток, торговцев, бродяг — для религиозных сцен.',
+      'Его техника «тенебро» — резкий контраст света и тьмы — потрясла современников.',
+      'Вёл бурную жизнь: дрался на улицах, убил человека и скитался в изгнании.',
+      'Погиб молодым, в 38 лет, при загадочных обстоятельствах на побережье Тосканы.',
+      'Его влияние распространилось по всей Европе — от Испании до Нидерландов.'
+    ],
+    paintings: [
+      {
+        title: 'Призвание апостола Матфея',
+        year: '1599–1600',
+        url: '/images/Michelangelo_Caravaggio_025.jpg',
+        description: 'Луч света, выхватывающий лица из темноты таверны — визитная карточка «тенебро».'
+      },
+      {
+        title: 'Ужин в Эммаусе',
+        year: '1601',
+        url: '/images/Caravaggio_-_Cena_in_Emmaus.jpg',
+        description: 'Момент узнавания воскресшего Христа — драматичный жест и потрясённые лица апостолов.'
+      },
+      {
+        title: 'Медуза',
+        year: '1597',
+        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Caravaggio_Medusa.jpg/800px-Caravaggio_Medusa.jpg',
+        description: 'Щит с отрубленной головой горгоны Медузы — символ ужаса и реалистичности барокко.'
+      }
+    ],
+    styleFeatures: [
+      'Тенебро — драматичный контраст света и тьмы (ясноветие)',
+      'Реализм: изображение простых людей с улицы в роли святых и богов',
+      'Динамичные диагональные композиции и мгновенность запечатлённого действия'
+    ],
+    quiz: [
+      {
+        type: 'guessArtistByPainting',
+        paintingId: 0,
+        options: ['Рембрандт', 'Караваджо', 'Веласкес', 'Тициан'],
+        correct: 1
+      },
+      {
+        type: 'trueFalse',
+        question: 'Караваджо использовал простых людей с улицы в качестве моделей для религиозных сцен.',
+        correct: 1
+      },
+      {
+        type: 'guessArtistByStyle',
+        question: 'Какой итальянский художник стал основоположником техники «тенебро» — резкого контраста света и тьмы?',
+        options: ['Тициан', 'Караваджо', 'Леонардо да Винчи', 'Рафаэль'],
+        correct: 1
+      }
+    ]
+  }
+];
+
+export function getCurrentArtist(): Artist {
+  const START_DATE = new Date('2025-05-13T00:00:00');
+  const now = new Date();
+  const diffTime = now.getTime() - START_DATE.getTime();
+  const diffWeeks = Math.floor(diffTime / (7 * 24 * 60 * 60 * 1000));
+  const index = ((diffWeeks % artists.length) + artists.length) % artists.length;
+  return artists[index];
+}
+
+export function getWeekNumber(): number {
+  const START_DATE = new Date('2025-05-13T00:00:00');
+  const now = new Date();
+  const diffTime = now.getTime() - START_DATE.getTime();
+  return Math.floor(diffTime / (7 * 24 * 60 * 60 * 1000)) + 1;
+}
+
+export function getArtistById(id: string): Artist | undefined {
+  return artists.find(a => a.id === id);
+}
